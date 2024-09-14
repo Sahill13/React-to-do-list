@@ -1,0 +1,21 @@
+.tota {
+  font-size: 40px;
+  font-weight: 700;
+  margin: 40px;
+  text-align: center;
+}
+
+input {
+  width: 100%;
+}
+
+.items-container{
+text-align: left;
+}
+
+.sg-button{
+  min-width: 80px;
+}
+.sg-row{
+margin: 10px 5px;
+}
