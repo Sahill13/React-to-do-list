@@ -9,13 +9,11 @@ export default function App() {
   const [todoItems, setTodoItems] = useState([]);
 
   const handleNewItem = (itemName, itemDueDate) => {
-    console.log(`New item added ${itemName} Date: ${itemDueDate}`);
     const newTodoItems = [
       ...todoItems,
       { task: itemName, date: itemDueDate },
     ];
     setTodoItems(newTodoItems);
-    console.log(newTodoItems);
   };
 
   const handleDeleteItem=(itemName)=>{
