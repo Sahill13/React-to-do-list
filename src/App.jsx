@@ -1,18 +1,36 @@
 import Adding from "./Adding";
-import Task from "./Task";
-import Task2 from "./Task2";
-import "./App.css"
-import 'bootstrap/dist/css/bootstrap.min.css' 
-
+import TodoItems from "./todoItems";
+import WelcomeMessage from "./WelcomeMessage";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { useState } from "react";
 
 export default function App() {
-  return (<center className="todo-container">
-      <h1 className="tota">To-Do App</h1> 
-      <Adding></Adding>
-      <div className="items-container">
-      <Task></Task>
-      <Task2></Task2>.
-      </div>
+  const [todoItems, setTodoItems] = useState([]);
+
+  const handleNewItem = (itemName, itemDueDate) => {
+    console.log(`New item added ${itemName} Date: ${itemDueDate}`);
+    const newTodoItems = [
+      ...todoItems,
+      { task: itemName, date: itemDueDate },
+    ];
+    setTodoItems(newTodoItems);
+    console.log(newTodoItems);
+  };
+
+  const handleDeleteItem=(itemName)=>{
+    const newTodoItems= todoItems.filter((item) => item.task !== itemName) ; 
+   setTodoItems(newTodoItems)
+  }
+
+  return (
+    <>
+      <center className="todo-container">
+        <h1 className="tota">To-Do App</h1>
+        <Adding onNewItem={handleNewItem}></Adding>
+        <TodoItems todoItems={todoItems} onDeleteClick={handleDeleteItem} ></TodoItems>
+        {todoItems.length === 0 && <WelcomeMessage></WelcomeMessage>}
       </center>
+    </>
   );
 }
